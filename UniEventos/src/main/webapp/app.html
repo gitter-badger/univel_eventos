@@ -1,25 +1,34 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Uni Eventos</title>
-<link href="assets/semantic/dist/semantic.min.css" rel="stylesheet" media="screen">
+<link href="assets/semantic/dist/semantic.min.css" rel="stylesheet"
+	media="screen">
 <style media="screen">
-	    .on-center {
-				justify-content: center;
-			}
-			.on-middle{
-				align-items: center;
-				justify-content: space-around;
-				display: flex;
-			}
-			.iconsearch{
-				width: 80%
-			}
-			.ui.borderless{
-				min-height: 4.857em;
-			}
+.on-center {
+	justify-content: center;
+}
+
+.on-middle {
+	align-items: center;
+	justify-content: space-around;
+	display: flex;
+}
+
+.iconsearch {
+	width: 80%
+}
+
+.ui.borderless {
+	min-height: 4.857em;
+}
+
+.ui.margin-top {
+	margin-top: 10px;
+}
 </style>
 <script src="scripts/vendor/modernizr-2.8.3.min.js"></script>
 <script src="scripts/vendor/jquery-2.1.1.js"></script>
@@ -29,30 +38,54 @@
 <body>
 	<div class="ui borderless main menu">
 		<div class="ui text container on-center">
-			<div href="#" class="header item">
-				 UniEventos
-			</div>
+			<div href="#" class="header item">UniEventos</div>
 		</div>
 	</div>
-<div class="ui segment on-middle" style=" min-height: 450px">
-	<div class="ui icon input iconsearch">
-	  <i class="search icon"></i>
-	  <input type="text" placeholder="Escreva o nome do aluno">
+
+	<div class="ui form segment" style="min-height: 450px">
+
+		<div class="ui on-middle">
+			<div class="ui icon input iconsearch">
+				<i class="search icon"></i> <input type="text"
+					placeholder="Escreva o nome do aluno">
+			</div>
+			<div class="ui hidden divider"></div>
+			<div class="ui primary button">
+				Lançar <i class="green checkmark icon"></i>
+			</div>
+		</div>
+
+		<div class="ui fields on-center margin-top " style="display: flex;">
+			<div class="three wide field">
+				<div class="ui checkbox">
+					<input type="checkbox" tabindex="0"> <label>Quarta-Feira</label>
+				</div>
+			</div>
+
+			<div class="three wide field">
+				<div class="ui checkbox">
+					<input type="checkbox" tabindex="0"> <label>Quinta-feira</label>
+				</div>
+			</div>
+
+			<div class="three wide field">
+				<div class="ui checkbox">
+					<input type="checkbox" tabindex="0"> <label>Sexta-feira</label>
+				</div>
+			</div>
+
+		</div>
 	</div>
-	<div class="ui hidden divider"></div>
-	<div class="ui primary button">
-		Lançar
-		<i class="green checkmark icon"></i>
-	</div>
-</div>
+
 	<div class="ui black inverted vertical footer segment">
-	  <div class="ui center aligned container">
-	    <div class="ui inverted section divider"></div>
-	    <img src="assets/img/Batman5.svg" class="ui centered mini image">
-	    <div class="ui horizontal inverted small divided link list">
-	      <a class="item" > Desenvolvido por UnivelHQ <span style="color: #D02929;font-size: 16px; padding: 5px;">&#9829</span></a>
-	    </div>
-	  </div>
+		<div class="ui center aligned container">
+			<div class="ui inverted section divider"></div>
+			<img src="assets/img/Batman5.svg" class="ui centered mini image">
+			<div class="ui horizontal inverted small divided link list">
+				<a class="item"> Desenvolvido por UnivelHQ <span
+					style="color: #D02929; font-size: 16px; padding: 5px;">&#9829</span></a>
+			</div>
+		</div>
 	</div>
 
 </body>
