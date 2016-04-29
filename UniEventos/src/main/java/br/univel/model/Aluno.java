@@ -24,6 +24,10 @@ public class Aluno implements Serializable {
 	private String nome;
 
 	@Column(nullable = false)
+	private String turma;
+
+	
+	@Column(nullable = false)
 	private Integer ra;
 
 	public Long getId() {
@@ -91,5 +95,13 @@ public class Aluno implements Serializable {
 		if (ra != null)
 			result += ", ra: " + ra;
 		return result;
+	}
+
+	public String getTurma() {
+		return turma;
+	}
+
+	public void setTurma(String turma) {
+		this.turma = turma;
 	}
 }

@@ -1,6 +1,7 @@
 package br.univel.rest;
 
 import java.util.List;
+import java.util.jar.Attributes.Name;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -31,86 +32,75 @@ public class AlunoEndpoint {
 	@PersistenceContext(unitName = "UniEventos-persistence-unit")
 	private EntityManager em;
 
-	@POST
+	@GET
+	@Path("buscar/{q}")
 	@Consumes("application/json")
-	public Response create(Aluno entity) {
-		em.persist(entity);
+	public Response buscar(@PathParam("q") String q) {
+		em.persist(Aluno.class);
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT a.nome,");
+		sb.append("       a.ra,");
+		sb.append("		  a.turma");
+		sb.append("	 FROM Aluno a");
+		sb.append(" WHERE  1=1 AND");
+		sb.append(" a.nome like :nome ");
+		sb.append(" ORDER BY a.turma limit 5");
+		
+		TypedQuery<Aluno> buscarAlunos = em
+				.createQuery(sb.toString(),Aluno.class)
+					.setParameter("nome", q);
+		
+		List<Aluno> listaAlunos;
+		try {
+			listaAlunos = buscarAlunos.getResultList();
+		} catch (NoResultException nre) {
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		
+		return Response.ok(listaAlunos).build();		
+	}
+
+	
+	@POST
+	@Path("lancarHoras")
+	@Consumes("application/json")
+	public Response lancarHoras(Aluno aluno) {
+		em.persist(aluno);
+
+		if(horasLancadas(aluno)){
+			return Response.status(Status.NOT_FOUND).build();
+		}
+		
 		return Response.created(
 				UriBuilder.fromResource(AlunoEndpoint.class)
-						.path(String.valueOf(entity.getId())).build()).build();
+						.path(String.valueOf(aluno.getId())).build()).build();
 	}
 
-	@DELETE
-	@Path("/{id:[0-9][0-9]*}")
-	public Response deleteById(@PathParam("id") Long id) {
-		Aluno entity = em.find(Aluno.class, id);
-		if (entity == null) {
-			return Response.status(Status.NOT_FOUND).build();
-		}
-		em.remove(entity);
-		return Response.noContent().build();
+
+	/**
+	 * 
+	 * Verifica se ass horas do aluno já foram lançadas
+	 * 
+	 * @return boolean
+	 */
+	private boolean horasLancadas(Aluno aluno) {
+		
+		// Agora é com você -- Gaviões do forro
+		
+		return true;
 	}
-
-	@GET
-	@Path("/{id:[0-9][0-9]*}")
-	@Produces("application/json")
-	public Response findById(@PathParam("id") Long id) {
-		TypedQuery<Aluno> findByIdQuery = em
-				.createQuery(
-						"SELECT DISTINCT a FROM Aluno a WHERE a.id = :entityId ORDER BY a.id",
-						Aluno.class);
-		findByIdQuery.setParameter("entityId", id);
-		Aluno entity;
-		try {
-			entity = findByIdQuery.getSingleResult();
-		} catch (NoResultException nre) {
-			entity = null;
-		}
-		if (entity == null) {
-			return Response.status(Status.NOT_FOUND).build();
-		}
-		return Response.ok(entity).build();
-	}
-
-	@GET
-	@Produces("application/json")
-	public List<Aluno> listAll(@QueryParam("start") Integer startPosition,
-			@QueryParam("max") Integer maxResult) {
-		TypedQuery<Aluno> findAllQuery = em.createQuery(
-				"SELECT DISTINCT a FROM Aluno a ORDER BY a.id", Aluno.class);
-		if (startPosition != null) {
-			findAllQuery.setFirstResult(startPosition);
-		}
-		if (maxResult != null) {
-			findAllQuery.setMaxResults(maxResult);
-		}
-		final List<Aluno> results = findAllQuery.getResultList();
-		return results;
-	}
-
-	@PUT
-	@Path("/{id:[0-9][0-9]*}")
-	@Consumes("application/json")
-	public Response update(@PathParam("id") Long id, Aluno entity) {
-		if (entity == null) {
-			return Response.status(Status.BAD_REQUEST).build();
-		}
-		if (id == null) {
-			return Response.status(Status.BAD_REQUEST).build();
-		}
-		if (!id.equals(entity.getId())) {
-			return Response.status(Status.CONFLICT).entity(entity).build();
-		}
-		if (em.find(Aluno.class, id) == null) {
-			return Response.status(Status.NOT_FOUND).build();
-		}
-		try {
-			entity = em.merge(entity);
-		} catch (OptimisticLockException e) {
-			return Response.status(Response.Status.CONFLICT)
-					.entity(e.getEntity()).build();
-		}
-
-		return Response.noContent().build();
+	
+	/**
+	 * 
+	 * Verifica se ass horas do aluno já foram lançadas
+	 * 
+	 * @return boolean
+	 */
+	private boolean participouDoEvento(Aluno aluno) {
+		
+		// O difícil como vocês sabem, não ẽ fácil  -- Internet
+		
+		return true;
 	}
 }
