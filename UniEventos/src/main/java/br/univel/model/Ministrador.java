@@ -13,6 +13,15 @@ import javax.persistence.TemporalType;
 
 import br.univel.model.repository.Entidade;
 
+/**
+ * 
+ * 	Gerenciador de eventos da UNIVEL
+ * 
+ * Pessoa Responsável por ministrar o dia de evento
+ * 
+ * @author aureo <aureojr1@gmail.com>
+ * @since 09/05/2016 1:19
+ */
 @Entity
 @Table(name = "GEV_MINISTRADOR")
 public class Ministrador implements Entidade{
