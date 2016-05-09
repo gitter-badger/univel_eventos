@@ -52,6 +52,15 @@ public class DiaEvento implements Entidade{
 		
 	@Column(name="carga_horaria")
 	private Date cargaHoraria;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="created_at")
+	private Date createdAt;
+		
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="updated_at")
+	private Date updatedAt;
+		
 	
 	@OneToMany
 	@JoinColumn(name= "ministrador", referencedColumnName = "id")
