@@ -17,16 +17,18 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
+ * Padronização da classe pessoa, conforme entidade no banco de dados.
  *
  * @author juliano
+ * @author Alex
  */
+
 @Entity
-@Table(name = "Gev_Pessoa")
+@Table(name = "GEV_PESSOA")
 public class Pessoa implements Entidade {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 
 	@Column(name = "nome")

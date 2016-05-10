@@ -14,21 +14,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * Padronização da classe participantes, conforme entidade no banco de dados.
+ * 
  * @author juliano
+ * @author Alex
  */
 @Entity
-@XmlRootElement
+@Table(name="GEV_PARTICIPANTE")
 public class Participante implements Entidade {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", updatable = false, nullable = false)
   private Long id;
 
   @JoinColumn(name = "id_evento", referencedColumnName = "id")

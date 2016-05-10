@@ -14,84 +14,96 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * Padronização da classe ingresso, conforme entidade no banco de dados.
  *
  * @author juliano
+ * @author Alex
  */
 @Entity
-@XmlRootElement
+@Table(name = "GEV_INGRESSO")
 public class Ingresso implements Entidade {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", updatable = false, nullable = false)
-  private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-  @JoinColumn(name = "id_evento", referencedColumnName = "id")
-  @ManyToOne
-  private Evento evento;
+	@JoinColumn(name = "id_evento", referencedColumnName = "id")
+	@ManyToOne
+	private Evento evento;
 
-  @JoinColumn(name = "id_particiante", referencedColumnName = "id")
-  @ManyToOne
-  private Participante participante;
+	@JoinColumn(name = "id_particiante", referencedColumnName = "id")
+	@ManyToOne
+	private Participante participante;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "created_at")
-  protected Date createdAt;
+	@Column(name = "chave")
+	private String chave;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "updated_at")
-  protected Date updatedAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_at")
+	protected Date createdAt;
 
-  @Override
-  public Date getCreatedAt() {
-    return this.createdAt;
-  }
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_at")
+	protected Date updatedAt;
 
-  @Override
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
+	@Override
+	public Date getCreatedAt() {
+		return this.createdAt;
+	}
 
-  @Override
-  public Date getUpdatedAt() {
-    return this.updatedAt;
-  }
+	@Override
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
-  @Override
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
+	@Override
+	public Date getUpdatedAt() {
+		return this.updatedAt;
+	}
 
-  @Override
-  public Long getId() {
-    return id;
-  }
+	@Override
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
-  @Override
-  public void setId(Long id) {
-    this.id = id;
-  }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-  public Evento getEvento() {
-    return evento;
-  }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  public void setEvento(Evento evento) {
-    this.evento = evento;
-  }
+	public Evento getEvento() {
+		return evento;
+	}
 
-  public Participante getParticipante() {
-    return participante;
-  }
+	public void setEvento(Evento evento) {
+		this.evento = evento;
+	}
 
-  public void setParticipante(Participante participante) {
-    this.participante = participante;
-  }
+	public Participante getParticipante() {
+		return participante;
+	}
 
+	public void setParticipante(Participante participante) {
+		this.participante = participante;
+	}
+
+	public String getChave() {
+		return chave;
+	}
+
+	public void setChave(String chave) {
+		this.chave = chave;
+	}
 
 }
