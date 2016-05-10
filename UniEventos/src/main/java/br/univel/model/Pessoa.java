@@ -24,81 +24,81 @@ import javax.persistence.TemporalType;
 @Table(name = "Gev_Pessoa")
 public class Pessoa implements Entidade {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", updatable = false, nullable = false)
-  private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, nullable = false)
+	private Long id;
 
-  @Column(name = "nome")
-  private String nome;
+	@Column(name = "nome")
+	private String nome;
 
-  @Column(name = "cpf")
-  private String cpf;
+	@Column(name = "cpf")
+	private String cpf;
 
-  @Temporal(TemporalType.DATE)
-  @Column(name = "idade")
-  private Date idade;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "idade")
+	private Date idade;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "created_at")
-  protected Date createdAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_at")
+	protected Date createdAt;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "updated_at")
-  protected Date updatedAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_at")
+	protected Date updatedAt;
 
-  @Override
-  public Date getCreatedAt() {
-    return this.createdAt;
-  }
+	@Override
+	public Date getCreatedAt() {
+		return this.createdAt;
+	}
 
-  @Override
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
+	@Override
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
-  @Override
-  public Date getUpdatedAt() {
-    return this.updatedAt;
-  }
+	@Override
+	public Date getUpdatedAt() {
+		return this.updatedAt;
+	}
 
-  @Override
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
+	@Override
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
-  @Override
-  public Long getId() {
-    return id;
-  }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-  @Override
-  public void setId(Long id) {
-    this.id = id;
-  }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  public String getNome() {
-    return nome;
-  }
+	public String getNome() {
+		return nome;
+	}
 
-  public void setNome(String nome) {
-    this.nome = nome;
-  }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-  public String getCpf() {
-    return cpf;
-  }
+	public String getCpf() {
+		return cpf;
+	}
 
-  public void setCpf(String cpf) {
-    this.cpf = cpf;
-  }
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
-  public Date getIdade() {
-    return idade;
-  }
+	public Date getIdade() {
+		return idade;
+	}
 
-  public void setIdade(Date idade) {
-    this.idade = idade;
-  }
+	public void setIdade(Date idade) {
+		this.idade = idade;
+	}
 
 }

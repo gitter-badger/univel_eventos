@@ -29,118 +29,118 @@ import br.univel.model.repository.Entidade;
 @Table(name = "GEV_DIA_EVENTO")
 public class DiaEvento implements Entidade {
 
-  private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-  @Column(name = "descricao_dia")
-  private String descricaoDia;
+	@Column(name = "descricao_dia")
+	private String descricaoDia;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "data_evento")
-  private Date dataEvento;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_evento")
+	private Date dataEvento;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "inicio_evento")
-  private Date inicioEvento;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "inicio_evento")
+	private Date inicioEvento;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "fim_evento")
-  private Date fimEvento;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "fim_evento")
+	private Date fimEvento;
 
-  @Column(name = "carga_horaria")
-  private Date cargaHoraria;
+	@Column(name = "carga_horaria")
+	private Date cargaHoraria;
 
-  @OneToMany
-  @JoinColumn(name = "ministrador", referencedColumnName = "id")
-  private List<Ministrador> listaMinistradores;
+	@OneToMany
+	@JoinColumn(name = "ministrador", referencedColumnName = "id")
+	private List<Ministrador> listaMinistradores;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "created_at")
-  protected Date createdAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_at")
+	protected Date createdAt;
 
-  @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "updated_at")
-  protected Date updatedAt;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "updated_at")
+	protected Date updatedAt;
 
-  @Override
-  public Date getCreatedAt() {
-    return this.createdAt;
-  }
+	@Override
+	public Date getCreatedAt() {
+		return this.createdAt;
+	}
 
-  @Override
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
-  }
+	@Override
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
-  @Override
-  public Date getUpdatedAt() {
-    return this.updatedAt;
-  }
+	@Override
+	public Date getUpdatedAt() {
+		return this.updatedAt;
+	}
 
-  @Override
-  public void setUpdatedAt(Date updatedAt) {
-    this.updatedAt = updatedAt;
-  }
+	@Override
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
-  @Override
-  public Long getId() {
-    return id;
-  }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-  @Override
-  public void setId(Long id) {
-    this.id = id;
-  }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  public String getDescricaoDia() {
-    return descricaoDia;
-  }
+	public String getDescricaoDia() {
+		return descricaoDia;
+	}
 
-  public void setDescricaoDia(String descricaoDia) {
-    this.descricaoDia = descricaoDia;
-  }
+	public void setDescricaoDia(String descricaoDia) {
+		this.descricaoDia = descricaoDia;
+	}
 
-  public Date getDataEvento() {
-    return dataEvento;
-  }
+	public Date getDataEvento() {
+		return dataEvento;
+	}
 
-  public void setDataEvento(Date dataEvento) {
-    this.dataEvento = dataEvento;
-  }
+	public void setDataEvento(Date dataEvento) {
+		this.dataEvento = dataEvento;
+	}
 
-  public Date getInicioEvento() {
-    return inicioEvento;
-  }
+	public Date getInicioEvento() {
+		return inicioEvento;
+	}
 
-  public void setInicioEvento(Date inicioEvento) {
-    this.inicioEvento = inicioEvento;
-  }
+	public void setInicioEvento(Date inicioEvento) {
+		this.inicioEvento = inicioEvento;
+	}
 
-  public Date getFimEvento() {
-    return fimEvento;
-  }
+	public Date getFimEvento() {
+		return fimEvento;
+	}
 
-  public void setFimEvento(Date fimEvento) {
-    this.fimEvento = fimEvento;
-  }
+	public void setFimEvento(Date fimEvento) {
+		this.fimEvento = fimEvento;
+	}
 
-  public Date getCargaHoraria() {
-    return cargaHoraria;
-  }
+	public Date getCargaHoraria() {
+		return cargaHoraria;
+	}
 
-  public void setCargaHoraria(Date cargaHoraria) {
-    this.cargaHoraria = cargaHoraria;
-  }
+	public void setCargaHoraria(Date cargaHoraria) {
+		this.cargaHoraria = cargaHoraria;
+	}
 
-  public List<Ministrador> getListaMinistradores() {
-    return listaMinistradores;
-  }
+	public List<Ministrador> getListaMinistradores() {
+		return listaMinistradores;
+	}
 
-  public void setListaMinistradores(List<Ministrador> listaMinistradores) {
-    this.listaMinistradores = listaMinistradores;
-  }
+	public void setListaMinistradores(List<Ministrador> listaMinistradores) {
+		this.listaMinistradores = listaMinistradores;
+	}
 
 }
