@@ -5,71 +5,100 @@
  */
 package br.univel.model;
 
-import java.io.Serializable;
+import br.univel.model.repository.Entidade;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author juliano
  */
 @Entity
-@XmlRootElement
-public class Pessoa implements Serializable{
-  
+@Table(name = "Gev_Pessoa")
+public class Pessoa implements Entidade {
+
   @Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Pss_Codigo", updatable = false, nullable = false)
-	private Long pssCodigo;
-  
-  @Column(name = "Pss_Nome")
-  private String pssNome;
-  
-  @Column(name = "Pss_Cpf")
-  private String pssCpf;
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id", updatable = false, nullable = false)
+  private Long id;
+
+  @Column(name = "nome")
+  private String nome;
+
+  @Column(name = "cpf")
+  private String cpf;
 
   @Temporal(TemporalType.DATE)
-  @Column(name = "Pss_Idade")
-  private Date pssIdade;
+  @Column(name = "idade")
+  private Date idade;
 
-  public Date getPssIdade() {
-    return pssIdade;
-  }
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "created_at")
+  protected Date createdAt;
 
-  public void setPssIdade(Date pssIdade) {
-    this.pssIdade = pssIdade;
-  }
-  
-  
-  
-  public String getPssCpf() {
-    return pssCpf;
-  }
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "updated_at")
+  protected Date updatedAt;
 
-  public void setPssCpf(String pssCpf) {
-    this.pssCpf = pssCpf;
+  @Override
+  public Date getCreatedAt() {
+    return this.createdAt;
   }
 
-  public String getPssNome() {
-    return pssNome;
+  @Override
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
   }
 
-  public void setPssNome(String pssNome) {
-    this.pssNome = pssNome;
+  @Override
+  public Date getUpdatedAt() {
+    return this.updatedAt;
   }
 
-  public Long getPssCodigo() {
-    return pssCodigo;
+  @Override
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
-  public void setPssCodigo(Long pssCodigo) {
-    this.pssCodigo = pssCodigo;
+  @Override
+  public Long getId() {
+    return id;
   }
+
+  @Override
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public String getCpf() {
+    return cpf;
+  }
+
+  public void setCpf(String cpf) {
+    this.cpf = cpf;
+  }
+
+  public Date getIdade() {
+    return idade;
+  }
+
+  public void setIdade(Date idade) {
+    this.idade = idade;
+  }
+
 }

@@ -5,7 +5,8 @@
  */
 package br.univel.model;
 
-import java.io.Serializable;
+import br.univel.model.repository.Entidade;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -21,27 +24,57 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @XmlRootElement
-public class Ingresso implements Serializable{
-  
+public class Ingresso implements Entidade {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Ing_Codigo", updatable = false, nullable = false)
-  private Long ingCodigo;
-  
-  @JoinColumn(name = "Evn_Codigo", referencedColumnName = "Evn_Codigo")
+  @Column(name = "id", updatable = false, nullable = false)
+  private Long id;
+
+  @JoinColumn(name = "id_evento", referencedColumnName = "id")
   @ManyToOne
   private Evento evento;
-  
-  @JoinColumn(name = "Prt_Codigo", referencedColumnName = "Prt_Codigo")
+
+  @JoinColumn(name = "id_particiante", referencedColumnName = "id")
   @ManyToOne
   private Participante participante;
 
-  public Long getIngCodigo() {
-    return ingCodigo;
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "created_at")
+  protected Date createdAt;
+
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "updated_at")
+  protected Date updatedAt;
+
+  @Override
+  public Date getCreatedAt() {
+    return this.createdAt;
   }
 
-  public void setIngCodigo(Long ingCodigo) {
-    this.ingCodigo = ingCodigo;
+  @Override
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  @Override
+  public Date getUpdatedAt() {
+    return this.updatedAt;
+  }
+
+  @Override
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
+
+  @Override
+  public Long getId() {
+    return id;
+  }
+
+  @Override
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public Evento getEvento() {
@@ -59,7 +92,6 @@ public class Ingresso implements Serializable{
   public void setParticipante(Participante participante) {
     this.participante = participante;
   }
-  
-  
-  
+
+
 }

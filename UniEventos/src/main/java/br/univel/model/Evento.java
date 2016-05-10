@@ -1,6 +1,5 @@
 package br.univel.model;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,17 +11,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.univel.model.repository.Entidade;
+import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.univel.model.repository.Entidade;
-
 /**
- * 
- * 	Gerenciador de eventos da UNIVEL
- * 
- * 	Entidade Evento, armazena as configurações básicas de um evento
- * 
+ *
+ * Gerenciador de eventos da UNIVEL
+ *
+ * Entidade Evento, armazena as configurações básicas de um evento
+ *
  * @author Juliano Grans
  * @author Aureo Junior <aureojr1@gmail.com>
  *
@@ -31,119 +31,118 @@ import br.univel.model.repository.Entidade;
 @Table(name = "GEV_EVENTO")
 public class Evento implements Entidade {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	
-	@Column(name = "nome")
-	private String nome;
-	
-	/**
-	 * 
-	 * Valor total do evento, uma espécie de pacote completo, em casos onde as pessoas 
-	 * pederão comprar dias do evento, ou palestras específicas que não se aplicam esse
-	 * valor.
-	 * 
-	 */
-	@Column(name = "valor_base")
-	private float valorBase;	
-	
-	@OneToOne
-	@JoinColumn(name = "id_organizacao_evento", referencedColumnName ="id")
-	private OrganizacaoEvento organizacaoEvento;
-	
-	@OneToMany
-	@JoinColumn(name = "id_dias_evento", referencedColumnName ="id")
-	private List<DiaEvento> listaDiasEvento;
-	
-	@OneToOne
-	@JoinColumn(name = "id_configuracoes_evento", referencedColumnName ="id")
-	private ConfiguracoesEvento configuracoesEvento;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at")
-	private Date createdAt;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_at")
-	private Date updatedAt;
-	
-	public String getNome() {
-		return nome;
-	}
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+  @Column(name = "nome")
+  private String nome;
 
-	public float getValorBase() {
-		return valorBase;
-	}
+  /**
+   *
+   * Valor total do evento, uma espécie de pacote completo, em casos onde as
+   * pessoas pederão comprar dias do evento, ou palestras específicas que não se
+   * aplicam esse valor.
+   *
+   */
+  @Column(name = "valor_base")
+  private float valorBase;
 
-	public void setValorBase(float valorBase) {
-		this.valorBase = valorBase;
-	}
+  @OneToOne
+  @JoinColumn(name = "id_organizacao_evento", referencedColumnName = "id")
+  private OrganizacaoEvento organizacaoEvento;
 
-	public OrganizacaoEvento getOrganizacaoEvento() {
-		return organizacaoEvento;
-	}
+  @OneToMany
+  @JoinColumn(name = "id_dias_evento", referencedColumnName = "id")
+  private List<DiaEvento> listaDiasEvento;
 
-	public void setOrganizacaoEvento(OrganizacaoEvento organizacaoEvento) {
-		this.organizacaoEvento = organizacaoEvento;
-	}
+  @OneToOne
+  @JoinColumn(name = "id_configuracao_evento", referencedColumnName = "id")
+  private ConfiguracaoEvento configuracaoEventos;
 
-	public List<DiaEvento> getListaDiasEvento() {
-		return listaDiasEvento;
-	}
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "created_at")
+  protected Date createdAt;
 
-	public void setListaDiasEvento(List<DiaEvento> listaDiasEvento) {
-		this.listaDiasEvento = listaDiasEvento;
-	}
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "updated_at")
+  protected Date updatedAt;
 
-	public ConfiguracoesEvento getConfiguracoesEvento() {
-		return configuracoesEvento;
-	}
+  @Override
+  public Date getCreatedAt() {
+    return this.createdAt;
+  }
 
-	public void setConfiguracoesEvento(ConfiguracoesEvento configuracoesEvento) {
-		this.configuracoesEvento = configuracoesEvento;
-	}
+  @Override
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
 
-	@Override
-	public String toString() {
-		return "Eventos ";
-	}
+  @Override
+  public Date getUpdatedAt() {
+    return this.updatedAt;
+  }
 
-	@Override
-	public int getId() {
-		return id;
-	}
-	
-	@Override
-	public void setId(int id) {
-		this.id = id;		
-	}
+  @Override
+  public void setUpdatedAt(Date updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 
-	@Override
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+  public ConfiguracaoEvento getConfiguracaoEventos() {
+    return configuracaoEventos;
+  }
 
-	@Override
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-   
-	@Override
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+  public void setConfiguracaoEventos(ConfiguracaoEvento configuracaoEventos) {
+    this.configuracaoEventos = configuracaoEventos;
+  }
 
-	@Override
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-	
-	
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public float getValorBase() {
+    return valorBase;
+  }
+
+  public void setValorBase(float valorBase) {
+    this.valorBase = valorBase;
+  }
+
+  public OrganizacaoEvento getOrganizacaoEvento() {
+    return organizacaoEvento;
+  }
+
+  public void setOrganizacaoEvento(OrganizacaoEvento organizacaoEvento) {
+    this.organizacaoEvento = organizacaoEvento;
+  }
+
+  public List<DiaEvento> getListaDiasEvento() {
+    return listaDiasEvento;
+  }
+
+  public void setListaDiasEvento(List<DiaEvento> listaDiasEvento) {
+    this.listaDiasEvento = listaDiasEvento;
+  }
+
+  @Override
+  public String toString() {
+    return "Eventos ";
+  }
+
+  @Override
+  public Long getId() {
+    return id;
+  }
+
+  @Override
+  public void setId(Long id) {
+    this.id = id;
+  }
+
 }
