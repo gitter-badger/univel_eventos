@@ -98,6 +98,10 @@
 	background-color: #F5F5F5 !important;
 	
 }
+.ui.special.cards{
+	justify-content: space-between;
+	display: flex;
+}
 
 .footer{
 background-color: #1b1c1d !important;	
