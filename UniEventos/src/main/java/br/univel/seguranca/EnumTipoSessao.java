@@ -9,4 +9,7 @@ package br.univel.seguranca;
  */
 public enum EnumTipoSessao {
 
+	ANONIMA,AUTENTICADA,EXPIRADA;
+	
+	
 }
