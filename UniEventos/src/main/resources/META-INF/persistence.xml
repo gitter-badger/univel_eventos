@@ -3,7 +3,7 @@
   <persistence-unit name="UniEventos-persistence-unit" transaction-type="JTA">
     <description>UniEventos Persistence Unit</description>
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <jta-data-source>java:jboss/datasources/UnivelDS</jta-data-source>
+    <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
     <class>br.univel.model.Evento</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
